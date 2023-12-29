@@ -1,3 +1,4 @@
+// tasks given by TOP :
 // You will need two classes or factories:
 
 // LinkedList class / factory, which will represent the full list.
@@ -35,6 +36,7 @@ class LinkedList {
     this.tail = null;
   }
   append(value) {
+    // my first node is pointed by tail and last node is pointed by head . append adds new node and head will point it 
     let newNode = new Node(value);
     if (this.head != null) {
       this.head.next = newNode;
@@ -139,21 +141,23 @@ class LinkedList {
    let prev =current;
     let i = 0;
     const node = new Node(value);
+    // this will add node to the first if index < 1
     if (index < 1) {
       node.next = this.tail;
       this.tail = node;
-      return "added at the first";
+      return "added at the beginning";
     }
     while (current != null) {
       if (i == index) {
         node.next = current;
         prev.next = node;
-        return `added at the ${i}th index `;
+        return `added at index ${i} `;
       }
       prev = current;
       current = current.next;
       i++;
     }
+    // this will add node to the last even if the index provided is greater than total node count
     if (prev == this.head) {
       prev.next = node;
       this.head = node;
@@ -184,40 +188,57 @@ class LinkedList {
       current=current.next;
       i++;
     }
+    // if the below code executes it means index is <0 or greater than total node 
       throw Error('Undefined index provided');
   }
 
 }
 const linkedList = new LinkedList();
-// console.log(linkedList.tail);
+console.log('trying to check tail and pop() while lists are empty ');
+console.log(linkedList.tail);
 console.log(linkedList.pop());
 
+console.log("appending started ");
 linkedList.append(3);
 linkedList.append(4);
 linkedList.append(2);
 linkedList.append(1);
+
 console.log("adding to an index started");
 
 console.log(linkedList.insertAt(10,10));
 console.log(linkedList.insertAt(5,0));
 console.log(linkedList.insertAt(6,3));
 console.log(linkedList.insertAt(8,6));
+
 console.log(linkedList.toString());
 
+console.log("calling removeAt");
 console.log(linkedList.removeAt(1));
 console.log(linkedList.removeAt(5));
+
 console.log(linkedList.toString());
-// console.log(linkedList.contains(3));
-// console.log(linkedList.find(2));
-// console.log(linkedList.find(8));
 
-// console.log(linkedList.head);
-// console.log("Size : " + linkedList.size());
-// console.log(linkedList.at(2));
-// console.log(linkedList.pop());
-// console.log(linkedList.pop());
-// console.log(linkedList.pop());
-// console.log(linkedList.pop());
-// console.log(linkedList.pop());
+console.log("checking if it contains 3 :"+linkedList.contains(3));
 
-// console.log("Size : " + linkedList.size());
+console.log("index of 2 :"+linkedList.find(2));
+console.log("index of 8 :"+linkedList.find(8));
+
+console.log("head,tail");
+console.log(linkedList.head);
+console.log(linkedList.tail);
+
+console.log("Size : " + linkedList.size());
+
+console.log("calling at(2)");
+console.log(linkedList.at(2));
+
+console.log("calling pop() 5 times and then printing the list");
+console.log(linkedList.pop());
+console.log(linkedList.pop());
+console.log(linkedList.pop());
+console.log(linkedList.pop());
+console.log(linkedList.pop());
+
+console.log(linkedList.toString());
+console.log("Size : " + linkedList.size());
